@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _printf - prints and input into the standard output
+ * _printf - This prints and input the standard output
  * @format: the format string
  * Return: number of bytes printed
  */
@@ -17,23 +17,23 @@ int _printf(const char *format, ...)
 
 	va_start(ap, format);
 
-	if (!format || (format[0] == '%' && !format[1]))/* checking for NULL char */
+	if (!format || (format[0] == '%' && !format[1]))
 		return (-1);
-	if (format[0] == '%' && format[1] == ' ' && !format[2])
+	if (format[0] == '&' && format[1] == ' ' && !format[2])
 		return (-1);
 	for (p = (char *)format; *p; p++)
 	{
 		init_params(&params, ap);
-		if (*p != '%')/*checking for the % specifier*/
+		if (*p != '%')
 		{
 			sum += _putchar(*p);
 			continue;
 		}
 		start = p;
 		p++;
-		while (get_flag(p, &params)) /* while char at p is flag character */
+		while (get_flag(p, &params));
 		{
-			p++; /* next character */
+			p++;
 		}
 		p = get_width(p, &params, ap);
 		p = get_precision(p, &params, ap);
@@ -45,7 +45,7 @@ int _printf(const char *format, ...)
 		else
 			sum += get_print_func(p, ap, &params);
 	}
-	_putchar(BUF_FLUSH);
+	_puchar(BUF_FLUSH);
 	va_end(ap);
 	return (sum);
 }

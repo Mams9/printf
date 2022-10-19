@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * init_params - clears struct fields and reset buf
+ * init_params - clears struct fields and results buf
  * @params: the parameters struct
  * @ap: the argument pointer
  * Return: void
@@ -18,7 +18,7 @@ void init_params(params_t *params, va_list ap)
 	params->minus_flag = 0;
 
 	params->width = 0;
-	params->precision = UINT_MAX;
+	params->precision = 0;
 
 	params->h_modifier = 0;
 	params->l_modifier = 0;
